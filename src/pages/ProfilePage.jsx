@@ -28,10 +28,13 @@ export default function ProfilePage(props) {
         },
     }
     const onFinish = (values) => {
-
+        console.log("Success:", values);    
         editUsernWs({ ...values, imageUrl })
             .then(res => {
                 const { status, data, errorMessage } = res;
+                console.log("este es el Res:",res)
+                    console.log("las PROPS", props.user.firstN_name, props.user.last_name)
+
                 if (status) {
                     props.authentication(data.user);
                 } else {
@@ -58,19 +61,19 @@ export default function ProfilePage(props) {
             {/* Modal */}
             <Descriptions title="User Info">
                 <>
-                    <Descriptions.Item label="Nombre">{`${props.user.firstName} ${props.user.lastName}`}</Descriptions.Item>
+                    <Descriptions.Item label="Nombre">{`${props.user.first_name} ${props.user.last_name}`}</Descriptions.Item>
                     <Descriptions.Item label="email">{props.user.email}</Descriptions.Item>
-                    <Descriptions.Item label="rol">{props.user.rol}</Descriptions.Item>
+                    <Descriptions.Item label="rol">{props.user.role}</Descriptions.Item>
                 </>
             </Descriptions>
-            <Form onFiinish={onFinish} onFinishFailed={onFinishFailed}>
+            <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
                 <FormItem
                     label="Nombre"
-                    name="firstName"
+                    name="first_name"
                 />
                 <FormItem
                     label="Apellido"
-                    name="lastName"
+                    name="last_name"
                 />
                 <FormItem
                     label="Correo"

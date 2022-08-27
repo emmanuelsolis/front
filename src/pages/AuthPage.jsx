@@ -54,12 +54,12 @@ const AuthPage = (props) => {
         <>
           <FormItem
           label="Nombre"
-          name="firstName"
+          name="first_name"
           type="text"
           />
           <FormItem
           label="Apellido"
-          name="lastName"
+          name="last_name"
           type="text"
           />
         </>  : null}
